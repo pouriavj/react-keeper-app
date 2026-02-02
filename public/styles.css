@@ -1,0 +1,336 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+body {
+  background: #eee;
+  background-image: url("https://transparenttextures.com/patterns/cubes.png");
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+header {
+  background-color: #f5ba13;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  color: #fff;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+  margin-left: -16px;
+}
+
+
+/* 100% height for root div so that it can be sent to child flex box page-container */
+#root{
+  height: 100%;
+}
+
+
+/* whole page is this flexbox , using this method for keeping the footer at the very bottom */
+/* becuse the container div is invisible at first , it cant have min-height and also the absolute  */
+/* positioning of the footer with bottom 0 will not work becuse at the end of the many notes the footer wont go further down */
+/* Then i made whole page flexbox with margin-top: auto on footer so that footer will be at the end of the flex column */
+.page-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+/* ***VIP*** MARGIN-TOP: AUTO MUST BE SET ON THE FOOTER SO THAT IT STICKS TO THE BOTTOM OF THE PAGE*/
+/* ==> FINAL TRICK: flex on the page container + column + height 100% + MARGIN TOP AUTO ON FOOTER <== */
+footer {
+  text-align: center;
+  width: 100%;
+  height: 2.5rem;
+  margin-top: auto;
+  padding: 35px;
+}
+
+footer p {
+  color: #ccc;
+}
+
+
+/* AUTO COLUMN with repeat (****auto-fill****, ...) Completely Responsieve without media */ 
+.container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+
+
+/* margin 16px auto to be at the center of the grid item div */
+.note {
+  background: #fdfcf8;
+  
+  background-size: 25px 25px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  position: relative;
+  margin: 16px;
+  
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  height: fit-content;
+}
+.note h1 {
+  
+  margin-bottom: 6px;
+  padding: 4px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+.note p {
+  
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.note button {
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  color: #f5ba13;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
+
+form.create-note {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 20px auto;
+  background: #ffffff;
+  padding: 15px;
+  
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+form.create-note input,
+form.create-note textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  padding-bottom: 8px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+}
+form.create-note button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: #f5ba13;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+.Fab:hover{
+  background-color: 
+#dfa403 !important;
+}
+.Delete{
+   max-width: 25px !important;
+}
+.Delete:hover{
+  color: #dfa403 !important ;
+}
+
+/* Loading Screen */
+.loading{
+  position: fixed;
+  inset: 0;
+  background-color: #eeeeeee1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.hidden{
+  display: none;
+}
+.page-loader {
+  width: 80px;
+  height: 80px;
+  border: 8px solid rgba(241, 225, 184, 0.25); 
+  border-top: 8px solid #f5ba13; 
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 20px rgba(254, 209, 29, 0.5);
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+.tool-flex{
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  color: #877575;
+}
+
+.tools-container{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: #8775753d solid 1px;
+  padding: 11px;
+}
+.tool-item{
+  padding: 8px;
+  cursor: pointer;
+}
+.tool-item:hover{
+  background-color: #eee;  
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin: 0;
+  justify-content: center;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background: #FDFFFC;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.bold{
+  font-weight: 700;
+}
+.edit-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+.edit{
+  font-size: 20px;
+}
+button{
+  margin: 0 !important;
+}
+.edit:hover{
+  color: #dfa403 ;
+}
+.three-dots{
+  background: rgba(255, 166, 0, 0.13);
+  backdrop-filter: blur(55px);
+  padding-top: 8px;
+  padding-right: 30px;
+  padding-bottom: 8px;
+  width: 110%;
+  margin-bottom: 8px;
+  margin: -10px;
+  display: flex;
+  align-items: center;
+}
+.dots{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: all ease 0.7s;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  
+}
+
+.three-dots span{
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: #424242b7;
+}
+
+.dots:hover{
+  background-color: #a7a7a721;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Drop Down Menu Under Three Dots */
+.drop-down{
+  margin-left: 8px;
+ 
+  color: #424242b7;
+}
+.drop-down i {
+  transition: all ease 0.7s;
+  margin: 8px;
+  cursor: pointer;
+}
+.drop-down i:hover{
+  color: #dfa403;
+}
+.label-theme{
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  z-index: 5;
+  font-size: 12px;
+  width: max-content;
+  background-color: #fcfbfbab;
+  padding: 2px;
+  text-align: center;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+  padding: 2px;
+}
+.label-font{
+  position: absolute;
+  top: 2px;
+  left: 48px;
+  z-index: 5;
+  font-size: 12px;
+  width: max-content;
+  background-color: #fcfbfbab;
+  padding: 2px;
+  text-align: center;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+.label-align{
+  position: absolute;
+  top: 2px;
+  left: 82px;
+  z-index: 5;
+  font-size: 12px;
+  width: max-content;
+  background-color: #fcfbfbab;
+  padding: 2px;
+  text-align: center;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+}

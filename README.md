@@ -45,6 +45,6 @@ This project goes beyond a basic keeper clone by adding a **rich text editor**, 
 
 Here’s what the app looks like:
 
-![React Keeper App Demo](./public/keeper-demo.gif)
+![React Keeper App Demo](./keeper-app.jpg)
 
 ---

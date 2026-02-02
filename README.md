@@ -7,7 +7,7 @@
 ![CSS](https://img.shields.io/badge/Styling-CSS-orange)
 
 A modern and interactive **note-taking application** built with **React functional components**.  
-This project goes beyond a basic keeper clone by adding a **rich text editor**, **editable notes**, **custom themes**, **animated UI interactions**, and lifecycle-based behavior using `useEffect`.
+This project goes beyond a basic keeper clone by adding a **rich text editor**, **editable notes**, **custom themes** and **animated UI interactions**.
 
 ---
 
